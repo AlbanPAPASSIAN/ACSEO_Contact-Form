@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <h1 class="text-center text-uppercase">Espace d'administration</h1>
+</div>
+
+<div class="container">
+    <div class="mt-5 mb-5">
+        <h2>Liste des mails non traités</h2>
+        {% if contactNotTreated|length > 0 %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Prénom/Nom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date d'envoi</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contact in contactNotTreated %}
+                    <tr>
+                        <th scope="row">{{ contact.id }}</th>
+                        <td>{{ contact.username }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.message  }}</td>
+                        <td>{{ contact.sendAt|date("m/d/Y") }}</td>
+                        <td><a href="{{ path('admin.edit', {id: contact.id}) }}" class="btn btn-primary">Voir</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h5 class="ml-5"><i class="fas fa-times"></i> Aucun message non traité</h5>
+        {% endif %}
+    </div>
+
+    <hr />
+
+    <div class="mt-5">
+        <h2>Liste des mails traités</h2>
+        {% if contactTreated|length > 0 %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Prénom/Nom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date d'envoie</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contact in contactTreated %}
+                    <tr>
+                        <th scope="row">{{ contact.id }}</th>
+                        <td>{{ contact.username }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.message  }}</td>
+                        <td>{{ contact.sendAt|date("m/d/Y") }}</td>
+                        <td><a href="{{ path('admin.edit', {id: contact.id}) }}" class="btn btn-primary">Voir</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h5 class="ml-5"><i class="fas fa-times"></i> Aucun message traité</h5>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

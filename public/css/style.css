@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #333333 !important;
+}
+
+.jumbotron{
+    background-color: #333333 !important;
+    color: white;
+    border-bottom: 10px solid #129D5A;
+}
+
+.btn-primary{
+    background-color: #129D5A;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: #1D774C;
+    border: none;
+}
+
+.btn-primary:active{
+    background-color: #1D774C !important;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <h1 class="text-center text-uppercase">Contactez-nous</h1>
+</div>
+
+<div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.username, {'attr': {'placeholder': 'Indiquez votre Prénom/Nom'}}) }}
+        {{ form_row(form.email, {'attr': {'placeholder': 'Indiquez votre adresse e-mail'}}) }}
+        {{ form_row(form.message, {'attr': {'placeholder': 'Entrez votre message', 'rows': '7'}}) }}
+    <div class="form-groupe">
+        <button class="btn btn-primary" type="submit">Envoyer</button>
+    </div>
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}
